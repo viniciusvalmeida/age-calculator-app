@@ -12,7 +12,7 @@ export default function AgeResult() {
 		const fullYear = currentMonth + 1 - +month;
 
 		if (fullYear < 0) {
-			return 0;
+			return new Date().getFullYear() - +year - 1;
 		}
 
 		return new Date().getFullYear() - +year;
