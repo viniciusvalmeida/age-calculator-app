@@ -39,7 +39,7 @@ export default function BirthForm() {
 					<div className="flex flex-grow h-[1px] bg-neutral-light-grey self-center"></div>
 					<button
 						type="submit"
-						className="bg-primary-purple rounded-full p-4"
+						className="bg-primary-purple rounded-full p-4 hover:bg-neutral-off-black"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
