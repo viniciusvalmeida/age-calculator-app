@@ -27,7 +27,7 @@ export default function FormInput({
 				type="text"
 				name={value}
 				placeholder={placeHolder}
-				className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 appearance-none"
+				className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28"
 				onChange={(e) => setValue(e.target.value)}
 			/>
 		</div>

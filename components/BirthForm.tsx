@@ -1,16 +1,21 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import FormInput from "./FormInput";
 import { AgeContext } from "@/contexts/ageContext";
 
 export default function BirthForm() {
-	const { day, month, year, setDay, setMonth, setYear } =
-		useContext(AgeContext);
+	const [birthDay, setBirthDay] = useState("");
+	const [birthMonth, setBirthMonth] = useState("");
+	const [birthYear, setBirthYear] = useState("");
+
+	const { setDay, setMonth, setYear } = useContext(AgeContext);
 
 	const handleSubmit = (ev: React.SyntheticEvent) => {
 		ev.preventDefault();
-		console.log(day, month, year);
+		setDay(birthDay);
+		setMonth(birthMonth);
+		setYear(birthYear);
 	};
 	return (
 		<div>
@@ -18,21 +23,21 @@ export default function BirthForm() {
 				<div className="flex space-x-8">
 					<FormInput
 						label="day"
-						value={day}
+						value={birthDay}
 						placeHolder="DD"
-						setValue={setDay}
+						setValue={setBirthDay}
 					/>
 					<FormInput
 						label="month"
-						value={month}
+						value={birthMonth}
 						placeHolder="MM"
-						setValue={setMonth}
+						setValue={setBirthMonth}
 					/>
 					<FormInput
 						label="year"
-						value={year}
+						value={birthYear}
 						placeHolder="YYYY"
-						setValue={setYear}
+						setValue={setBirthYear}
 					/>
 				</div>
 				<div className="flex">
