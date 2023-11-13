@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useState } from "react";
-import FormInput from "./FormInput";
 import { AgeContext } from "@/contexts/ageContext";
 
 export default function BirthForm() {
@@ -13,6 +12,7 @@ export default function BirthForm() {
 
 	const handleSubmit = (ev: React.SyntheticEvent) => {
 		ev.preventDefault();
+
 		setDay(birthDay);
 		setMonth(birthMonth);
 		setYear(birthYear);
@@ -21,24 +21,63 @@ export default function BirthForm() {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div className="flex space-x-8">
-					<FormInput
-						label="day"
-						value={birthDay}
-						placeHolder="DD"
-						setValue={setBirthDay}
-					/>
-					<FormInput
-						label="month"
-						value={birthMonth}
-						placeHolder="MM"
-						setValue={setBirthMonth}
-					/>
-					<FormInput
-						label="year"
-						value={birthYear}
-						placeHolder="YYYY"
-						setValue={setBirthYear}
-					/>
+					<div className="flex flex-col space-y-2">
+						<label
+							htmlFor="day"
+							className="text-neutral-smokey-grey text-xs font-bold invalid:text-primary-light-red"
+						>
+							DAY
+						</label>
+						<input
+							type="text"
+							name={birthDay}
+							placeholder="DD"
+							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer invalid:border-primary-light-red"
+							onChange={(e) => setBirthDay(e.target.value)}
+							pattern="\b([1-9]|1[0-9]|2[0-9]|3[0-1])\b"
+						/>
+						<span className="text-xs text-primary-light-red invisible peer-invalid:visible">
+							Insert days of month
+						</span>
+					</div>
+					<div className="flex flex-col space-y-2">
+						<label
+							htmlFor="month"
+							className="text-neutral-smokey-grey text-xs font-bold"
+						>
+							MONTH
+						</label>
+						<input
+							type="text"
+							name={birthMonth}
+							placeholder="MM"
+							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer"
+							onChange={(e) => setBirthMonth(e.target.value)}
+							pattern="\b([1-9]|1[0-2])\b"
+						/>
+						<span className="text-xs text-primary-light-red invisible peer-invalid:visible">
+							Insert a valid month
+						</span>
+					</div>
+					<div className="flex flex-col space-y-2">
+						<label
+							htmlFor="year"
+							className="text-neutral-smokey-grey text-xs font-bold"
+						>
+							YEAR
+						</label>
+						<input
+							type="text"
+							name={birthYear}
+							placeholder="YYYY"
+							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer"
+							onChange={(e) => setBirthYear(e.target.value)}
+							pattern="[0-9]{4}"
+						/>
+						<span className="text-xs text-primary-light-red invisible peer-invalid:visible">
+							Insert four numbers
+						</span>
+					</div>
 				</div>
 				<div className="flex">
 					<div className="flex flex-grow h-[1px] bg-neutral-light-grey self-center"></div>
