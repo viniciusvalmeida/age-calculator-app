@@ -13,9 +13,11 @@ export default function BirthForm() {
 	const handleSubmit = (ev: React.SyntheticEvent) => {
 		ev.preventDefault();
 
-		setDay(birthDay);
-		setMonth(birthMonth);
-		setYear(birthYear);
+		if (birthDay !== "" && birthMonth !== "" && birthYear !== "") {
+			setDay(birthDay);
+			setMonth(birthMonth);
+			setYear(birthYear);
+		}
 	};
 	return (
 		<div>
@@ -24,20 +26,21 @@ export default function BirthForm() {
 					<div className="flex flex-col space-y-2">
 						<label
 							htmlFor="day"
-							className="text-neutral-smokey-grey text-xs font-bold invalid:text-primary-light-red"
+							className="text-neutral-smokey-grey text-xs font-bold peer-invalid:text-primary-light-red"
 						>
 							DAY
 						</label>
 						<input
+							id="day"
 							type="text"
-							name={birthDay}
+							value={birthDay}
 							placeholder="DD"
 							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer invalid:border-primary-light-red"
 							onChange={(e) => setBirthDay(e.target.value)}
 							pattern="\b([1-9]|1[0-9]|2[0-9]|3[0-1])\b"
 						/>
 						<span className="text-xs text-primary-light-red invisible peer-invalid:visible">
-							Insert days of month
+							Insert a valid day
 						</span>
 					</div>
 					<div className="flex flex-col space-y-2">
@@ -48,8 +51,9 @@ export default function BirthForm() {
 							MONTH
 						</label>
 						<input
+							id="month"
 							type="text"
-							name={birthMonth}
+							value={birthMonth}
 							placeholder="MM"
 							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer"
 							onChange={(e) => setBirthMonth(e.target.value)}
@@ -67,8 +71,9 @@ export default function BirthForm() {
 							YEAR
 						</label>
 						<input
+							id="year"
 							type="text"
-							name={birthYear}
+							value={birthYear}
 							placeholder="YYYY"
 							className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28 peer"
 							onChange={(e) => setBirthYear(e.target.value)}
