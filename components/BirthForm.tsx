@@ -9,6 +9,8 @@ export default function BirthForm() {
 	const [birthMonth, setBirthMonth] = useState("");
 	const [birthYear, setBirthYear] = useState("");
 
+	const thirtyDayMonths = ["2", "4", "6", "9", "11"];
+
 	const { setDay, setMonth, setYear } = useContext(AgeContext);
 
 	const handleSubmit = (ev: React.SyntheticEvent) => {
@@ -49,38 +51,31 @@ export default function BirthForm() {
 			monthMsg.classList.add("invisible");
 			yearMsg.classList.add("invisible");
 
-			if (birthDay === "") {
+			if (!birthDay) {
 				dayMsg.innerHTML = "This field is required";
-				dayMsg.classList.remove("invisible");
 				dayInput.classList.add("border-primary-light-red");
 				dayLabel.classList.add("text-primary-light-red");
+				dayMsg.classList.remove("invisible");
 				return false;
 			}
 
-			if (birthMonth === "") {
+			if (!birthMonth) {
 				monthMsg.innerHTML = "This field is required";
-				monthMsg.classList.remove("invisible");
 				monthInput.classList.add("border-primary-light-red");
 				monthLabel.classList.add("text-primary-light-red");
+				monthMsg.classList.remove("invisible");
 				return false;
 			}
 
-			if (birthYear === "") {
+			if (!birthYear) {
 				yearMsg.innerHTML = "This field is required";
-				yearMsg.classList.remove("invisible");
 				yearInput.classList.add("border-primary-light-red");
 				yearLabel.classList.add("text-primary-light-red");
+				yearMsg.classList.remove("invisible");
 				return false;
 			}
 
-			if (
-				(birthMonth === "2" ||
-					birthMonth === "4" ||
-					birthMonth === "6" ||
-					birthMonth === "9" ||
-					birthMonth === "11") &&
-				birthDay === "31"
-			) {
+			if (birthMonth in thirtyDayMonths && birthDay === "31") {
 				dayMsg.innerHTML = "Must be a valid date";
 				dayLabel.classList.add("text-primary-light-red");
 				dayInput.classList.add("border-primary-light-red");
@@ -91,8 +86,8 @@ export default function BirthForm() {
 			if (+birthYear > new Date().getFullYear()) {
 				yearMsg.innerHTML = "Must be in the past";
 				yearInput.classList.add("border-primary-light-red");
-				yearMsg.classList.remove("invisible");
 				yearLabel.classList.add("text-primary-light-red");
+				yearMsg.classList.remove("invisible");
 				return false;
 			}
 		}
