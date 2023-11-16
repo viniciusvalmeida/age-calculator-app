@@ -90,6 +90,17 @@ export default function BirthForm() {
 				yearMsg.classList.remove("invisible");
 				return false;
 			}
+
+			if (
+				+birthYear === new Date().getFullYear() &&
+				+birthMonth > new Date().getMonth() + 1
+			) {
+				monthMsg.innerHTML = "Must be in the past";
+				monthInput.classList.add("border-primary-light-red");
+				monthLabel.classList.add("text-primary-light-red");
+				monthMsg.classList.remove("invisible");
+				return false;
+			}
 		}
 
 		setDay(birthDay);
