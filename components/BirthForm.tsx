@@ -101,6 +101,14 @@ export default function BirthForm() {
 				monthMsg.classList.remove("invisible");
 				return false;
 			}
+
+			if (+birthDay > new Date().getDate()) {
+				dayMsg.innerHTML = "Must be in the past";
+				dayInput.classList.add("border-primary-light-red");
+				dayLabel.classList.add("text-primary-light-red");
+				dayMsg.classList.remove("invisible");
+				return false;
+			}
 		}
 
 		setDay(birthDay);
