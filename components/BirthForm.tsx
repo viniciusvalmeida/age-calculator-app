@@ -118,7 +118,7 @@ export default function BirthForm() {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<div className="flex space-x-8">
+				<div className="flex space-x-6 md:space-x-8">
 					<div className="flex flex-col space-y-2">
 						<FormInput
 							label="day"
@@ -129,7 +129,7 @@ export default function BirthForm() {
 						/>
 						<span
 							id="dayMsg"
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
 						>
 							Must be a valid day
 						</span>
@@ -144,7 +144,7 @@ export default function BirthForm() {
 						/>
 						<span
 							id="monthMsg"
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible peer-"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
 						>
 							Must be a valid month
 						</span>
@@ -159,7 +159,7 @@ export default function BirthForm() {
 						/>
 						<span
 							id="yearMsg"
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
 						>
 							Insert four numbers
 						</span>
