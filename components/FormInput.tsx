@@ -6,7 +6,7 @@ type FormInputProps = {
 	label: string;
 	value: string;
 	placeHolder: string;
-	isEmpty: boolean;
+	pattern: string;
 	setValue: Dispatch<SetStateAction<string>>;
 };
 
@@ -14,29 +14,27 @@ export default function FormInput({
 	label,
 	value,
 	placeHolder,
-	isEmpty,
+	pattern,
 	setValue,
 }: FormInputProps) {
 	return (
-		<div className="flex flex-col space-y-2">
+		<>
 			<label
+				id={label + "Label"}
 				htmlFor={label}
-				className="text-neutral-smokey-grey text-xs font-bold"
+				className="text-neutral-smokey-grey text-xs font-bold peer-invalid:text-primary-light-red"
 			>
 				{label.toUpperCase()}
 			</label>
 			<input
+				id={label}
 				type="text"
-				name={value}
+				value={value}
 				placeholder={placeHolder}
-				className="border border-neutral-light-grey focus:outline-primary-purple rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-28"
+				className="border border-neutral-light-grey focus:outline-primary-purple font-bold text-xl rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-32 peer invalid:border-primary-light-red"
 				onChange={(e) => setValue(e.target.value)}
+				pattern={pattern}
 			/>
-			{isEmpty && (
-				<span className="text-xs text-primary-light-red">
-					This field is required
-				</span>
-			)}
-		</div>
+		</>
 	);
 }

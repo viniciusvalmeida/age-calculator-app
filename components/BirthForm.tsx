@@ -2,6 +2,7 @@
 
 import { useContext, useState } from "react";
 import { AgeContext } from "@/contexts/ageContext";
+import FormInput from "./FormInput";
 
 export default function BirthForm() {
 	const [birthDay, setBirthDay] = useState("");
@@ -91,6 +92,7 @@ export default function BirthForm() {
 				yearMsg.innerHTML = "Must be in the past";
 				yearInput.classList.add("border-primary-light-red");
 				yearMsg.classList.remove("invisible");
+				yearLabel.classList.add("text-primary-light-red");
 				return false;
 			}
 		}
@@ -104,20 +106,11 @@ export default function BirthForm() {
 			<form onSubmit={handleSubmit}>
 				<div className="flex space-x-8">
 					<div className="flex flex-col space-y-2">
-						<label
-							id="dayLabel"
-							htmlFor="day"
-							className="text-neutral-smokey-grey text-xs font-bold peer-invalid:text-primary-light-red"
-						>
-							DAY
-						</label>
-						<input
-							id="day"
-							type="text"
+						<FormInput
+							label="day"
+							placeHolder="DD"
 							value={birthDay}
-							placeholder="DD"
-							className="border border-neutral-light-grey focus:outline-primary-purple font-bold text-xl rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-32 peer invalid:border-primary-light-red"
-							onChange={(e) => setBirthDay(e.target.value)}
+							setValue={setBirthDay}
 							pattern="\b([1-9]|1[0-9]|2[0-9]|3[0-1])\b"
 						/>
 						<span
@@ -128,44 +121,26 @@ export default function BirthForm() {
 						</span>
 					</div>
 					<div className="flex flex-col space-y-2">
-						<label
-							id="monthLabel"
-							htmlFor="month"
-							className="text-neutral-smokey-grey text-xs font-bold"
-						>
-							MONTH
-						</label>
-						<input
-							id="month"
-							type="text"
+						<FormInput
+							label="month"
+							placeHolder="MM"
 							value={birthMonth}
-							placeholder="MM"
-							className="border border-neutral-light-grey focus:outline-primary-purple font-bold text-xl rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-32 peer invalid:border-primary-light-red"
-							onChange={(e) => setBirthMonth(e.target.value)}
+							setValue={setBirthMonth}
 							pattern="\b([1-9]|1[0-2])\b"
 						/>
 						<span
 							id="monthMsg"
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible peer-"
 						>
 							Must be a valid month
 						</span>
 					</div>
 					<div className="flex flex-col space-y-2">
-						<label
-							id="yearLabel"
-							htmlFor="year"
-							className="text-neutral-smokey-grey text-xs font-bold"
-						>
-							YEAR
-						</label>
-						<input
-							id="year"
-							type="text"
+						<FormInput
+							label="year"
+							placeHolder="YYYY"
 							value={birthYear}
-							placeholder="YYYY"
-							className="border border-neutral-light-grey focus:outline-primary-purple font-bold text-xl rounded-lg placeholder:font-bold placeholder:text-xl p-4 w-32 peer invalid:border-primary-light-red"
-							onChange={(e) => setBirthYear(e.target.value)}
+							setValue={setBirthYear}
 							pattern="[0-9]{4}"
 						/>
 						<span
