@@ -102,7 +102,11 @@ export default function BirthForm() {
 				return false;
 			}
 
-			if (+birthDay > new Date().getDate()) {
+			if (
+				+birthDay > new Date().getDate() &&
+				+birthYear === new Date().getFullYear() &&
+				+birthMonth > new Date().getMonth()
+			) {
 				dayMsg.innerHTML = "Must be in the past";
 				dayInput.classList.add("border-primary-light-red");
 				dayLabel.classList.add("text-primary-light-red");
