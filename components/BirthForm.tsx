@@ -169,17 +169,18 @@ export default function BirthForm() {
 						</span>
 					</div>
 				</div>
-				<div className="flex">
+				<div className="flex my-12 md:my-0">
 					<div className="flex flex-grow h-[1px] bg-neutral-light-grey self-center"></div>
 					<button
 						type="submit"
-						className="bg-primary-purple rounded-full p-4 hover:bg-neutral-off-black"
+						className="bg-primary-purple rounded-full p-4 hover:bg-neutral-off-black absolute self-center left-[44%] md:static"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="46"
 							height="44"
 							viewBox="0 0 46 44"
+							className="w-8 h-8 md:w-12 md:h-12"
 						>
 							<g fill="none" stroke="#FFF" strokeWidth="2">
 								<path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
