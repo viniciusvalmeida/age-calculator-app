@@ -3,7 +3,7 @@
 import { useContext, useRef } from "react";
 import { AgeContext } from "@/contexts/ageContext";
 import FormInput from "./FormInput";
-import { resetErrors } from "@/lib/formFunctions";
+import { resetErrors, showError } from "@/lib/formFunctions";
 
 export default function BirthForm() {
 	const thirtyDayMonths = ["2", "4", "6", "9", "11"];
@@ -47,42 +47,37 @@ export default function BirthForm() {
 			resetErrors(inputs, labels, msgs);
 
 			if (!birthDay) {
-				dayMsgRef.current.innerHTML = "This field is required";
-				dayInputRef.current.classList.add("border-primary-light-red");
-				dayLabelRef.current.classList.add("text-primary-light-red");
-				dayMsgRef.current.classList.remove("invisible");
+				showError(dayInputRef, dayLabelRef, dayMsgRef);
 				return false;
 			}
 
 			if (!birthMonth) {
-				monthMsgRef.current.innerHTML = "This field is required";
-				monthInputRef.current.classList.add("border-primary-light-red");
-				monthLabelRef.current.classList.add("text-primary-light-red");
-				monthMsgRef.current.classList.remove("invisible");
+				showError(monthInputRef, monthLabelRef, monthMsgRef);
 				return false;
 			}
 
 			if (!birthYear) {
-				yearMsgRef.current.innerHTML = "This field is required";
-				yearInputRef.current.classList.add("border-primary-light-red");
-				yearLabelRef.current.classList.add("text-primary-light-red");
-				yearMsgRef.current.classList.remove("invisible");
+				showError(yearInputRef, yearLabelRef, yearMsgRef);
 				return false;
 			}
 
 			if (birthMonth in thirtyDayMonths && birthDay === "31") {
-				dayMsgRef.current.innerHTML = "Must be a valid date";
-				dayLabelRef.current.classList.add("text-primary-light-red");
-				dayInputRef.current.classList.add("border-primary-light-red");
-				dayMsgRef.current.classList.remove("invisible");
+				showError(
+					dayInputRef,
+					dayLabelRef,
+					dayMsgRef,
+					"Must be a valid date"
+				);
 				return false;
 			}
 
 			if (+birthYear > new Date().getFullYear()) {
-				yearMsgRef.current.innerHTML = "Must be in the past";
-				yearInputRef.current.classList.add("border-primary-light-red");
-				yearLabelRef.current.classList.add("text-primary-light-red");
-				yearMsgRef.current.classList.remove("invisible");
+				showError(
+					yearInputRef,
+					yearLabelRef,
+					yearMsgRef,
+					"Must be in the past"
+				);
 				return false;
 			}
 
@@ -90,10 +85,12 @@ export default function BirthForm() {
 				+birthYear === new Date().getFullYear() &&
 				+birthMonth > new Date().getMonth() + 1
 			) {
-				monthMsgRef.current.innerHTML = "Must be in the past";
-				monthInputRef.current.classList.add("border-primary-light-red");
-				monthLabelRef.current.classList.add("text-primary-light-red");
-				monthMsgRef.current.classList.remove("invisible");
+				showError(
+					monthInputRef,
+					monthLabelRef,
+					monthMsgRef,
+					"Must be in the past"
+				);
 				return false;
 			}
 
@@ -102,10 +99,12 @@ export default function BirthForm() {
 				+birthYear === new Date().getFullYear() &&
 				+birthMonth > new Date().getMonth()
 			) {
-				dayMsgRef.current.innerHTML = "Must be in the past";
-				dayInputRef.current.classList.add("border-primary-light-red");
-				dayLabelRef.current.classList.add("text-primary-light-red");
-				dayMsgRef.current.classList.remove("invisible");
+				showError(
+					dayInputRef,
+					dayLabelRef,
+					dayMsgRef,
+					"Must be in the past"
+				);
 				return false;
 			}
 
