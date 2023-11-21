@@ -3,6 +3,7 @@
 import { useContext, useRef } from "react";
 import { AgeContext } from "@/contexts/ageContext";
 import FormInput from "./FormInput";
+import { resetErrors } from "@/lib/formFunctions";
 
 export default function BirthForm() {
 	const thirtyDayMonths = ["2", "4", "6", "9", "11"];
@@ -39,17 +40,11 @@ export default function BirthForm() {
 			const birthMonth = monthInputRef.current.value;
 			const birthYear = yearInputRef.current.value;
 
-			dayInputRef.current.classList.remove("border-primary-light-red");
-			monthInputRef.current.classList.remove("border-primary-light-red");
-			yearInputRef.current.classList.remove("border-primary-light-red");
+			const inputs = [dayInputRef, monthInputRef, yearInputRef];
+			const labels = [dayLabelRef, monthLabelRef, yearLabelRef];
+			const msgs = [dayMsgRef, monthMsgRef, yearMsgRef];
 
-			dayLabelRef.current.classList.remove("text-primary-light-red");
-			monthLabelRef.current.classList.remove("text-primary-light-red");
-			yearLabelRef.current.classList.remove("text-primary-light-red");
-
-			dayMsgRef.current.classList.add("invisible");
-			monthMsgRef.current.classList.add("invisible");
-			yearMsgRef.current.classList.add("invisible");
+			resetErrors(inputs, labels, msgs);
 
 			if (!birthDay) {
 				dayMsgRef.current.innerHTML = "This field is required";

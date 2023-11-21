@@ -21,9 +21,8 @@ export default function FormInput({
 		<>
 			<label
 				ref={labelRef}
-				id={label + "Label"}
 				htmlFor={label}
-				className="text-neutral-smokey-grey text-xs font-bold peer-invalid:text-primary-light-red"
+				className="text-neutral-smokey-grey text-xs font-bold "
 			>
 				{label.toUpperCase()}
 			</label>
