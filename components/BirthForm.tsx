@@ -1,14 +1,10 @@
 "use client";
 
-import { useContext, useState, useRef } from "react";
+import { useContext, useRef } from "react";
 import { AgeContext } from "@/contexts/ageContext";
 import FormInput from "./FormInput";
 
 export default function BirthForm() {
-	const [birthDay, setBirthDay] = useState("");
-	const [birthMonth, setBirthMonth] = useState("");
-	const [birthYear, setBirthYear] = useState("");
-
 	const thirtyDayMonths = ["2", "4", "6", "9", "11"];
 
 	const { setDay, setMonth, setYear } = useContext(AgeContext);
@@ -39,6 +35,10 @@ export default function BirthForm() {
 			monthLabelRef.current &&
 			yearLabelRef.current
 		) {
+			const birthDay = dayInputRef.current.value;
+			const birthMonth = monthInputRef.current.value;
+			const birthYear = yearInputRef.current.value;
+
 			dayInputRef.current.classList.remove("border-primary-light-red");
 			monthInputRef.current.classList.remove("border-primary-light-red");
 			yearInputRef.current.classList.remove("border-primary-light-red");
@@ -113,11 +113,11 @@ export default function BirthForm() {
 				dayMsgRef.current.classList.remove("invisible");
 				return false;
 			}
-		}
 
-		setDay(birthDay);
-		setMonth(birthMonth);
-		setYear(birthYear);
+			setDay(birthDay);
+			setMonth(birthMonth);
+			setYear(birthYear);
+		}
 	};
 	return (
 		<div>
@@ -129,8 +129,6 @@ export default function BirthForm() {
 							labelRef={dayLabelRef}
 							label="day"
 							placeHolder="DD"
-							value={birthDay}
-							setValue={setBirthDay}
 							pattern="\b([1-9]|1[0-9]|2[0-9]|3[0-1])\b"
 						/>
 						<span
@@ -146,8 +144,6 @@ export default function BirthForm() {
 							labelRef={monthLabelRef}
 							label="month"
 							placeHolder="MM"
-							value={birthMonth}
-							setValue={setBirthMonth}
 							pattern="\b([1-9]|1[0-2])\b"
 						/>
 						<span
@@ -163,8 +159,6 @@ export default function BirthForm() {
 							labelRef={yearLabelRef}
 							label="year"
 							placeHolder="YYYY"
-							value={birthYear}
-							setValue={setBirthYear}
 							pattern="[0-9]{4}"
 						/>
 						<span
