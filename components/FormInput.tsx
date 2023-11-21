@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, forwardRef, Ref } from "react";
 
 type FormInputProps = {
 	label: string;
@@ -8,6 +8,8 @@ type FormInputProps = {
 	placeHolder: string;
 	pattern: string;
 	setValue: Dispatch<SetStateAction<string>>;
+	inputRef: Ref<HTMLInputElement>;
+	labelRef: Ref<HTMLLabelElement>;
 };
 
 export default function FormInput({
@@ -16,10 +18,13 @@ export default function FormInput({
 	placeHolder,
 	pattern,
 	setValue,
+	inputRef,
+	labelRef,
 }: FormInputProps) {
 	return (
 		<>
 			<label
+				ref={labelRef}
 				id={label + "Label"}
 				htmlFor={label}
 				className="text-neutral-smokey-grey text-xs font-bold peer-invalid:text-primary-light-red"
@@ -27,6 +32,7 @@ export default function FormInput({
 				{label.toUpperCase()}
 			</label>
 			<input
+				ref={inputRef}
 				id={label}
 				type="text"
 				value={value}

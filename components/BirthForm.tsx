@@ -125,6 +125,8 @@ export default function BirthForm() {
 				<div className="flex space-x-6 md:space-x-8">
 					<div className="flex flex-col space-y-2">
 						<FormInput
+							inputRef={dayInputRef}
+							labelRef={dayLabelRef}
 							label="day"
 							placeHolder="DD"
 							value={birthDay}
@@ -140,6 +142,8 @@ export default function BirthForm() {
 					</div>
 					<div className="flex flex-col space-y-2">
 						<FormInput
+							inputRef={monthInputRef}
+							labelRef={monthLabelRef}
 							label="month"
 							placeHolder="MM"
 							value={birthMonth}
@@ -155,6 +159,8 @@ export default function BirthForm() {
 					</div>
 					<div className="flex flex-col space-y-2">
 						<FormInput
+							inputRef={yearInputRef}
+							labelRef={yearLabelRef}
 							label="year"
 							placeHolder="YYYY"
 							value={birthYear}
