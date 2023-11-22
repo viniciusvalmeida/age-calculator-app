@@ -61,7 +61,7 @@ export default function BirthForm() {
 				return false;
 			}
 
-			if (birthMonth in thirtyDayMonths && birthDay === "31") {
+			if (thirtyDayMonths.includes(birthMonth) && birthDay === "31") {
 				showError(
 					dayInputRef,
 					dayLabelRef,
