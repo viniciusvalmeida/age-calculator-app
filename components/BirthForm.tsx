@@ -127,7 +127,7 @@ export default function BirthForm() {
 						/>
 						<span
 							ref={dayMsgRef}
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-36"
 						>
 							Must be a valid day
 						</span>
@@ -142,7 +142,7 @@ export default function BirthForm() {
 						/>
 						<span
 							ref={monthMsgRef}
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-36"
 						>
 							Must be a valid month
 						</span>
@@ -157,7 +157,7 @@ export default function BirthForm() {
 						/>
 						<span
 							ref={yearMsgRef}
-							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-32"
+							className="text-xs italic text-primary-light-red invisible peer-invalid:visible w-24 md:w-36"
 						>
 							Insert four numbers
 						</span>
