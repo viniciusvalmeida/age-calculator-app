@@ -44,6 +44,8 @@ export default function BirthForm() {
 			const labels = [dayLabelRef, monthLabelRef, yearLabelRef];
 			const msgs = [dayMsgRef, monthMsgRef, yearMsgRef];
 
+			const currentDate = new Date();
+
 			resetErrors(inputs, labels, msgs);
 
 			if (!birthDay) {
@@ -71,7 +73,7 @@ export default function BirthForm() {
 				return false;
 			}
 
-			if (+birthYear > new Date().getFullYear()) {
+			if (+birthYear > currentDate.getFullYear()) {
 				showError(
 					yearInputRef,
 					yearLabelRef,
@@ -82,8 +84,8 @@ export default function BirthForm() {
 			}
 
 			if (
-				+birthYear === new Date().getFullYear() &&
-				+birthMonth > new Date().getMonth() + 1
+				+birthYear === currentDate.getFullYear() &&
+				+birthMonth > currentDate.getMonth() + 1
 			) {
 				showError(
 					monthInputRef,
@@ -95,9 +97,9 @@ export default function BirthForm() {
 			}
 
 			if (
-				+birthDay > new Date().getDate() &&
-				+birthYear === new Date().getFullYear() &&
-				+birthMonth > new Date().getMonth()
+				+birthDay > currentDate.getDate() &&
+				+birthYear === currentDate.getFullYear() &&
+				+birthMonth > currentDate.getMonth()
 			) {
 				showError(
 					dayInputRef,
