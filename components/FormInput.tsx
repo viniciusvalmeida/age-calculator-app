@@ -22,7 +22,7 @@ export default function FormInput({
 			<label
 				ref={labelRef}
 				htmlFor={label}
-				className="text-neutral-smokey-grey text-sm font-bold tracking-[.25em]"
+				className="text-neutral-smokey-grey text-xs md:text-sm font-bold tracking-[.25em]"
 			>
 				{label.toUpperCase()}
 			</label>
@@ -31,7 +31,7 @@ export default function FormInput({
 				id={label}
 				type="text"
 				placeholder={placeHolder}
-				className="border border-neutral-light-grey focus:outline-primary-purple font-bold text-3xl rounded-lg placeholder:font-bold placeholder:text-3xl p-4 w-24 md:w-36 peer invalid:border-primary-light-red"
+				className="border border-neutral-light-grey focus:outline-primary-purple font-extrabold text-xl md:text-3xl rounded-lg placeholder:font-bold placeholder:text-xl md:placeholder:text-3xl p-4 w-24 md:w-36 peer invalid:border-primary-light-red"
 				pattern={pattern}
 			/>
 		</>
