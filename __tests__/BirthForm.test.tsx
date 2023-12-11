@@ -22,14 +22,11 @@ describe("BirthForm", () => {
 		expect(spanError).toHaveTextContent("This field is required");
 	});
 
-	it("should show an error message when day input is more than 31", async () => {
+	it("should day input is invalid when is more than 31", async () => {
 		const dayInput = screen.getByLabelText("DAY");
-		const daySpan = screen.getByText("Must be a valid day");
 
-		await userEvent.type(dayInput, "3");
+		await userEvent.type(dayInput, "32");
 
-		// const spanStyle = getComputedStyle(daySpan);
-
-		expect(daySpan).not.toBeVisible();
+		expect(dayInput).toBeInvalid();
 	});
 });
